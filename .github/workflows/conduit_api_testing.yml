@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure_results
-          path: allure_results
+          path: allure-results
 
   generate-and-publish-report:
     name: Generate and publish Allure report
@@ -56,7 +56,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure_results
-          path: allure_results
+          path: allure-results
 
       - name: Setup JAVA
         uses: actions/setup-java@v3
@@ -71,7 +71,7 @@ jobs:
           sudo ln -s /opt/allure-2.34.1/bin/allure /usr/bin/allure
 
       - name: Generate Allure report
-        run: allure generate allure_results -o _site --clean
+        run: allure generate allure-results -o _site --clean
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
